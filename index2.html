@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Engineering Assessment Tool</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 600px;
+            margin: auto;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+        }
+        h2 {
+            color: #333;
+            text-align: center;
+        }
+        label {
+            font-weight: bold;
+            margin-top: 15px;
+            display: block;
+        }
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            transition: border-color 0.3s;
+        }
+        input[type="text"]:focus {
+            border-color: #28a745;
+            outline: none;
+        }
+        button {
+            padding: 10px 15px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+            font-size: 16px;
+        }
+        button:hover {
+            background-color: #218838;
+        }
+        .result {
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #e9ecef;
+            border-radius: 5px;
+            display: none;
+        }
+        .question {
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Engineering Assessment</h2>
+    <form id="assessmentForm">
+        <div class="question">
+            <label for="question1">1. What is the unit of Power?</label>
+            <input type="text" id="question1" required>
+        </div>
+        <div class="question">
+            <label for="question2">2. What is the unit of electrical resistance?</label>
+            <input type="text" id="question2" required>
+        </div>
+        <div class="question">
+            <label for="question3">3. What does LED stand for?</label>
+            <input type="text" id="question3" required>
+        </div>
+        <div class="question">
+            <label for="question4">4. What is the primary function of a capacitor?</label>
+            <input type="text" id="question4" required>
+        </div>
+        <div class="question">
+            <label for="question5">5. What is the function of a diode?</label>
+            <input type="text" id="question5" required>
+        </div>
+        <div class="question">
+            <label for="question6">6. What is the frequency range of the radio waves?</label>
+            <input type="text" id="question6" required>
+        </div>
+        <div class="question">
+            <label for="question7">7. What is Ohm's Law?</label>
+            <input type="text" id="question7" required>
+        </div>
+        <div class="question">
+            <label for="question8">8. What is the purpose of a transformer?</label>
+            <input type="text" id="question8" required>
+        </div>
+        <div class="question">
+            <label for="question9">9. What is the main function of an operational amplifier?</label>
+            <input type="text" id="question9" required>
+        </div>
+        <button type="submit">Submit</button>
+    </form>
+    <div class="result" id="result"></div>
+</div>
+
+<script>
+    document.getElementById('assessmentForm').addEventListener('submit', function(event) {
+        event.preventDefault(); // Prevent form submission
+
+        const answers = [
+            document.getElementById('question1').value.toLowerCase(),
+            document.getElementById('question2').value.toLowerCase(),
+            document.getElementById('question3').value.toLowerCase(),
+            document.getElementById('question4').value.toLowerCase(),
+            document.getElementById('question5').value.toLowerCase(),
+            document.getElementById('question6').value.toLowerCase(),
+            document.getElementById('question7').value.toLowerCase(),
+            document.getElementById('question8').value.toLowerCase(),
+            document.getElementById('question9').value.toLowerCase()
+        ];
+
+        const correctAnswers = [
+            'watt', 
+            'ohm', 
+            'light emitting diode', 
+            'store electrical energy', 
+            'allow current to flow in one direction', 
+            '30 khz to 300 ghz', 
+            'v = ir', 
+            'to step up or step down voltage', 
+            'to amplify voltage'
+        ];
+        
+        const resultDiv = document.getElementById('result');
+        let resultMessage = '';
+
+        answers.forEach((answer, index) => {
+            if (answer === correctAnswers[index]) {
+                resultMessage += `Question ${index + 1}: Correct!<br>`;
+            } else {
+                resultMessage += `Question ${index + 1}: Incorrect. The correct answer is "${correctAnswers[index]}".<br>`;
+            }
+        });
+
+        resultDiv.innerHTML = resultMessage;
+        resultDiv.style.display = 'block'; // Show the result
+    });
+</script>
+
+</body>
+</html>
